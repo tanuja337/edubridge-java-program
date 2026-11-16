@@ -1,0 +1,37 @@
+class BankAccount5 {
+    private String accountNumber;
+    private double balance;
+    public static int accountCount = 0;
+    public final String accountId;
+
+    public BankAccount5(String accNo) {
+        accountNumber = accNo;
+        balance = 0.0;
+        accountCount++;
+        accountId = "ID-" + accountCount;
+    }
+
+    public void deposit(double amount) {
+        if (amount > 0) balance += amount;
+        else System.out.println("Invalid deposit amount.");
+    }
+
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) balance -= amount;
+        else System.out.println("Invalid or insufficient funds.");
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+}
+
+public class BankTest5 {
+    public static void main(String[] args) {
+        BankAccount5 acc = new BankAccount5("12345");
+        acc.deposit(500);
+        acc.withdraw(200);
+        System.out.println("Balance: " + acc.getBalance());
+        // acc.balance = 1000; // This will cause a compilation error
+    }
+}
