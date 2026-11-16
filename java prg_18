@@ -1,0 +1,53 @@
+class Person10 {
+    String name;
+    int age;
+    Person10(String n, int a) {
+        name = n;
+        age = a;
+        System.out.println("Person constructor executed.");
+    }
+    void display() { System.out.println("Name: " + name + ", Age: " + age); }
+}
+
+class Employee10 extends Person10 {
+    int empId;
+    double basicSalary;
+    Employee10(String n, int a, int id, double basic) {
+        super(n, a);
+        empId = id;
+        basicSalary = basic;
+        System.out.println("Employee constructor executed.");
+    }
+    @Override
+    void display() { 
+        super.display();
+        System.out.println("ID: " + empId + ", Basic: " + basicSalary); 
+    }
+}
+
+class Manager10 extends Employee10 {
+    String department;
+    double bonus;
+    Manager10(String n, int a, int id, double basic, String dept, double b) {
+        super(n, a, id, basic);
+        department = dept;
+        bonus = b;
+        System.out.println("Manager constructor executed.");
+    }
+    void calculateTotalSalary() {
+        System.out.println("Total Salary: " + (basicSalary + bonus));
+    }
+    @Override
+    void display() {
+        super.display();
+        System.out.println("Dept: " + department + ", Bonus: " + bonus);
+    }
+}
+
+public class Main10 {
+    public static void main(String[] args) {
+        Manager10 m = new Manager10("John", 45, 101, 80000, "IT", 15000);
+        m.display();
+        m.calculateTotalSalary();
+    }
+}
